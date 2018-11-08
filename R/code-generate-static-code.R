@@ -76,8 +76,13 @@ generate_static_code <- function(server, ..., dots = list(),
   
   # collect arguments passed to the server function, evaluating in server frame
   srv_args <- shiny_server_header_vars(server, envir)
+  
+  print(srv_args)  
+  
   # srv_args_no_io <- srv_args[!names(srv_args) %in% c("input", "output")]
   srv_args_no_io <- srv_args[!names(srv_args) %in% "output"]
+    
+  print(srv_args_no_io)
   
   # get list of expressions from server function
   srv_body <- top_level_call_list(body(server))
